@@ -57,10 +57,6 @@ ENV TMPDIR=/tmp \
     KEYCLOAK_AUTH_SERVER_CLIENT_SECRET=f605b150-7636-4447-abd3-70988786b330 \
     JAVA_OPTS="-server -Xms2048m -Xmx4096m -XX:MetaspaceSize=96M -XX:MaxMetaspaceSize=256m -Djava.net.preferIPv4Stack=true -Djboss.modules.system.pkgs=org.jboss.byteman -Djava.awt.headless=true"
 
-# Keycloak docker entrypoint uses diff variable names
-ENV KEYCLOAK_USER=${KEYCLOAK_ADMIN_USER} \
-    KEYCLOAK_PASSWORD=${KEYCLOAK_ADMIN_PASSWORD}
-
 VOLUME /opt/jboss/keycloak/standalone/data
 
 COPY entrypoints/wait-for-mariadb.sh /lagoon/entrypoints/98-wait-for-mariadb.sh
