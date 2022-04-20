@@ -427,7 +427,8 @@ export const Group = (clients: {
             id: parentGroup.id
           },
           {
-            id: group.id
+            id: group.id,
+            name: group.name
           }
         );
       } catch (err) {
