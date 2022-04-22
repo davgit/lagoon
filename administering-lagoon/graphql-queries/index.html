@@ -1,0 +1,2931 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+        <meta name="author" content="The Lagoon Authors">
+      
+      
+        <link rel="canonical" href="https://docs.lagoon.sh/administering-lagoon/graphql-queries/">
+      
+      <link rel="icon" href="../../images/lagoon-icon.png">
+      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-8.2.6">
+    
+    
+      
+        <title>GraphQL API - Lagoon Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.9d5733d3.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.e6a45f82.min.css">
+        
+          
+          
+          <meta name="theme-color" content="#2094f3">
+        
+      
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+
+  <script>function gtag(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],gtag("js",new Date),gtag("config","G-W1SJFEVFDB"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){this.value&&gtag("event","search",{search_term:this.value})}),"undefined"!=typeof location$&&location$.subscribe(function(e){gtag("config","G-W1SJFEVFDB",{page_path:e.pathname})})})</script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-W1SJFEVFDB"></script>
+
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="blue" data-md-color-accent="light-blue">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#graphql-api" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Lagoon Documentation" class="md-header__button md-logo" aria-label="Lagoon Documentation" data-md-component="logo">
+      
+  <img src="../../images/lagoon-icon-bw.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Lagoon Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              GraphQL API
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/uselagoon/lagoon/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    uselagoon/lagoon
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Lagoon Documentation" class="md-nav__button md-logo" aria-label="Lagoon Documentation" data-md-component="logo">
+      
+  <img src="../../images/lagoon-icon-bw.png" alt="logo">
+
+    </a>
+    Lagoon Documentation
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/uselagoon/lagoon/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    uselagoon/lagoon
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2">
+          Using Lagoon - The Basics
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Using Lagoon - The Basics" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Using Lagoon - The Basics
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../using-lagoon-the-basics/" class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../using-lagoon-the-basics/local-development-environments/" class="md-nav__link">
+        Local Development Environments
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../using-lagoon-the-basics/setup-project/" class="md-nav__link">
+        Set Up a New Project
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../using-lagoon-the-basics/configure-webhooks/" class="md-nav__link">
+        Configure Webhooks
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../using-lagoon-the-basics/first-deployment/" class="md-nav__link">
+        First Deployment
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../using-lagoon-the-basics/lagoon-yml/" class="md-nav__link">
+        .lagoon.yml
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../using-lagoon-the-basics/docker-compose-yml/" class="md-nav__link">
+        docker-compose.yml
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../using-lagoon-the-basics/build-and-deploy-process/" class="md-nav__link">
+        Build and Deploy Process
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../using-lagoon-the-basics/going-live/" class="md-nav__link">
+        Going Live
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3">
+          Docker Images
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Docker Images" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Docker Images
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../docker-images/elasticsearch/" class="md-nav__link">
+        Elasticsearch
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../docker-images/mariadb/" class="md-nav__link">
+        MariaDB
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../docker-images/mariadb/mariadb-drupal/" class="md-nav__link">
+        MariaDB-Drupal
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../docker-images/mongodb/" class="md-nav__link">
+        MongoDB
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../docker-images/nodejs/" class="md-nav__link">
+        Node.js
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../docker-images/nginx/" class="md-nav__link">
+        NGINX
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../docker-images/nginx/nginx-drupal/" class="md-nav__link">
+        NGINX-Drupal
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../docker-images/php-cli/" class="md-nav__link">
+        PHP-CLI
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../docker-images/php-cli/php-cli-drupal/" class="md-nav__link">
+        PHP-CLI-Drupal
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../docker-images/php-fpm/" class="md-nav__link">
+        PHP-FPM
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../docker-images/postgres/" class="md-nav__link">
+        PostgreSQL
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../docker-images/rabbitmq/" class="md-nav__link">
+        RabbitMQ
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../docker-images/solr/" class="md-nav__link">
+        Solr
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../docker-images/solr/solr-drupal/" class="md-nav__link">
+        Solr-Drupal
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../docker-images/redis/" class="md-nav__link">
+        Redis
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../docker-images/varnish/" class="md-nav__link">
+        Varnish
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../docker-images/varnish/varnish-drupal/" class="md-nav__link">
+        Varnish-Drupal
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4">
+          Configuring Applications
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Configuring Applications" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          Configuring Applications
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_1" type="checkbox" id="__nav_4_1" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_1">
+          Drupal
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Drupal" data-md-level="2">
+        <label class="md-nav__title" for="__nav_4_1">
+          <span class="md-nav__icon md-icon"></span>
+          Drupal
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../drupal/services/" class="md-nav__link">
+        Services
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../drupal/services/mariadb/" class="md-nav__link">
+        MariaDB
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../drupal/services/redis/" class="md-nav__link">
+        Redis
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../drupal/services/solr/" class="md-nav__link">
+        Solr
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../drupal/services/varnish/" class="md-nav__link">
+        Varnish
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../drupal/step-by-step-getting-drupal-ready-to-run-on-lagoon/" class="md-nav__link">
+        Step by Step - Getting Drupal ready to run on Lagoon
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../drupal/first-deployment-of-drupal/" class="md-nav__link">
+        First Deployment of Drupal
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../drupal/drush-9/" class="md-nav__link">
+        Drush 9
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../drupal/subfolders/" class="md-nav__link">
+        Subfolders
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../drupal/integrate-drupal-and-fastly/" class="md-nav__link">
+        Integrate Drupal & Fastly
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../drupal/phpunit-and-phpstorm/" class="md-nav__link">
+        PHPUnit and PhpStorm
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5">
+          Understanding Logs
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Understanding Logs" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          Understanding Logs
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../logging/logging/" class="md-nav__link">
+        Logging
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../logging/kibana-examples/" class="md-nav__link">
+        Kibana Examples
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" type="checkbox" id="__nav_6" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_6">
+          Using Lagoon - Advanced
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Using Lagoon - Advanced" data-md-level="1">
+        <label class="md-nav__title" for="__nav_6">
+          <span class="md-nav__icon md-icon"></span>
+          Using Lagoon - Advanced
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../using-lagoon-advanced/service-types/" class="md-nav__link">
+        Service Types
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../using-lagoon-advanced/environment-types/" class="md-nav__link">
+        Environment Types
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../using-lagoon-advanced/environment-variables/" class="md-nav__link">
+        Environment Variables
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../using-lagoon-advanced/base-images/" class="md-nav__link">
+        Base Images
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../using-lagoon-advanced/workflows/" class="md-nav__link">
+        Workflows
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../using-lagoon-advanced/active-standby/" class="md-nav__link">
+        Active/Standby
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../using-lagoon-advanced/triggering-deployments/" class="md-nav__link">
+        Triggering Deployments
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../using-lagoon-advanced/backups/" class="md-nav__link">
+        Backups
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../using-lagoon-advanced/graphql/" class="md-nav__link">
+        GraphQL
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../using-lagoon-advanced/private-repositories/" class="md-nav__link">
+        Private Repositories
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../using-lagoon-advanced/simplesaml/" class="md-nav__link">
+        SimpleSAML
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../using-lagoon-advanced/ssh/" class="md-nav__link">
+        SSH
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../using-lagoon-advanced/project-default-users-keys/" class="md-nav__link">
+        Project Default Users and SSH Keys
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../using-lagoon-advanced/nodejs/" class="md-nav__link">
+        Node.js Graceful Shutdown
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../using-lagoon-advanced/setting-up-xdebug-with-lagoon/" class="md-nav__link">
+        Setting up Xdebug with Lagoon
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../using-lagoon-advanced/environment-idling/" class="md-nav__link">
+        Environment Idling
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../using-lagoon-advanced/custom-tasks/" class="md-nav__link">
+        Custom Tasks
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../using-lagoon-advanced/deploytarget-configs/" class="md-nav__link">
+        DeployTarget Configs
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../using-lagoon-advanced/blackfire/" class="md-nav__link">
+        Blackfire
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7" type="checkbox" id="__nav_7" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_7">
+          Installing Lagoon
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Installing Lagoon" data-md-level="1">
+        <label class="md-nav__title" for="__nav_7">
+          <span class="md-nav__icon md-icon"></span>
+          Installing Lagoon
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../installing-lagoon/requirements/" class="md-nav__link">
+        Requirements
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../installing-lagoon/efs-provisioner/" class="md-nav__link">
+        EFS Provisioner
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../installing-lagoon/install-harbor/" class="md-nav__link">
+        Install Harbor
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../installing-lagoon/lagoon-core/" class="md-nav__link">
+        Install Lagoon Core
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../installing-lagoon/install-lagoon-remote/" class="md-nav__link">
+        Install Lagoon Remote
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../installing-lagoon/lagoon-cli/" class="md-nav__link">
+        Install the Lagoon CLI
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../installing-lagoon/querying-graphql/" class="md-nav__link">
+        Querying with GraphQL
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../installing-lagoon/create-user/" class="md-nav__link">
+        Create Lagoon User
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../installing-lagoon/add-project/" class="md-nav__link">
+        Add a Project
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../installing-lagoon/deploy-project/" class="md-nav__link">
+        Deploy Your Project
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../installing-lagoon/add-group/" class="md-nav__link">
+        Add Group
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../installing-lagoon/lagoon-logging/" class="md-nav__link">
+        Lagoon Logging
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../installing-lagoon/opendistro/" class="md-nav__link">
+        OpenDistro
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../installing-lagoon/logs-concentrator/" class="md-nav__link">
+        Logs Concentrator
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../installing-lagoon/lagoon-backups/" class="md-nav__link">
+        Lagoon Backups
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../installing-lagoon/lagoon-files/" class="md-nav__link">
+        Lagoon Files
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../installing-lagoon/gitlab/" class="md-nav__link">
+        GitLab
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../installing-lagoon/update-lagoon/" class="md-nav__link">
+        Updating
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_8" type="checkbox" id="__nav_8" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_8">
+          Administering Lagoon
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Administering Lagoon" data-md-level="1">
+        <label class="md-nav__title" for="__nav_8">
+          <span class="md-nav__icon md-icon"></span>
+          Administering Lagoon
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          GraphQL API
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        GraphQL API
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#running-graphql-queries" class="md-nav__link">
+    Running GraphQL queries
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#creating-the-first-project" class="md-nav__link">
+    Creating the first project
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#allowing-access-to-the-project" class="md-nav__link">
+    Allowing access to the project
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#adding-notifications-to-the-project" class="md-nav__link">
+    Adding notifications to the project
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-graphql-queries" class="md-nav__link">
+    Example GraphQL queries
+  </a>
+  
+    <nav class="md-nav" aria-label="Example GraphQL queries">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#adding-a-new-openshift-target" class="md-nav__link">
+    Adding a new OpenShift target
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#adding-a-group-to-a-project" class="md-nav__link">
+    Adding a group to a project
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#adding-a-new-project" class="md-nav__link">
+    Adding a new project
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#list-projects-and-groups" class="md-nav__link">
+    List projects and groups
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#single-project" class="md-nav__link">
+    Single project
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#querying-a-project-by-its-git-url" class="md-nav__link">
+    Querying a project by its Git URL
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#updating-objects" class="md-nav__link">
+    Updating objects
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#deleting-environments" class="md-nav__link">
+    Deleting Environments
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#querying-a-project-to-see-what-groups-and-users-are-assigned" class="md-nav__link">
+    Querying a project to see what groups and users are assigned
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#maintaining-project-metadata" class="md-nav__link">
+    Maintaining project metadata
+  </a>
+  
+    <nav class="md-nav" aria-label="Maintaining project metadata">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#addupdate-metadata-on-a-project" class="md-nav__link">
+    Add/update metadata on a project
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#query-for-projects-by-metadata" class="md-nav__link">
+    Query for projects by metadata
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#removing-metadata-on-a-project" class="md-nav__link">
+    Removing metadata on a project
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../rbac/" class="md-nav__link">
+        Role-Based Access Control (RBAC)
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../feature-flags/" class="md-nav__link">
+        Feature Flags
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ssl-ciphers/" class="md-nav__link">
+        SSL Ciphers
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_8_5" type="checkbox" id="__nav_8_5" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_8_5">
+          Harbor
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Harbor" data-md-level="2">
+        <label class="md-nav__title" for="__nav_8_5">
+          <span class="md-nav__icon md-icon"></span>
+          Harbor
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../using-harbor/" class="md-nav__link">
+        Using Harbor
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../using-harbor/security-scanning/" class="md-nav__link">
+        Security Scanning
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../using-harbor/harbor-settings/" class="md-nav__link">
+        Harbor Settings
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../using-harbor/harbor-settings/harbor-core/" class="md-nav__link">
+        Harbor-Core
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../using-harbor/harbor-settings/harbor-database/" class="md-nav__link">
+        Harbor-Database
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../using-harbor/harbor-settings/harbor-jobservice/" class="md-nav__link">
+        Harbor-Jobservice
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../using-harbor/harbor-settings/harbor-trivy/" class="md-nav__link">
+        Harbor-Trivy
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../using-harbor/harbor-settings/harborregistry/" class="md-nav__link">
+        HarborRegistry
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../using-harbor/harbor-settings/harborregistryctl/" class="md-nav__link">
+        HarborRegistryCtl
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_9" type="checkbox" id="__nav_9" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_9">
+          Contributing to Lagoon
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Contributing to Lagoon" data-md-level="1">
+        <label class="md-nav__title" for="__nav_9">
+          <span class="md-nav__icon md-icon"></span>
+          Contributing to Lagoon
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../contributing/" class="md-nav__link">
+        Contributing
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../contributing-to-lagoon/developing-lagoon/" class="md-nav__link">
+        Developing Lagoon
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../contributing-to-lagoon/code-of-conduct/" class="md-nav__link">
+        Code of Conduct
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../contributing-to-lagoon/documentation/" class="md-nav__link">
+        Documentation
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../contributing-to-lagoon/tests/" class="md-nav__link">
+        Tests
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../contributing-to-lagoon/api-debugging/" class="md-nav__link">
+        API Debugging
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_10" type="checkbox" id="__nav_10" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_10">
+          Resources
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Resources" data-md-level="1">
+        <label class="md-nav__title" for="__nav_10">
+          <span class="md-nav__icon md-icon"></span>
+          Resources
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../code-of-conduct/" class="md-nav__link">
+        Code of Conduct
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../resources/faq/" class="md-nav__link">
+        FAQ
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../resources/glossary/" class="md-nav__link">
+        Glossary
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../resources/tutorials-and-webinars/" class="md-nav__link">
+        Tutorials, Webinars, and Videos
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://github.com/uselagoon/lagoon-examples" class="md-nav__link">
+        Lagoon Examples
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_11" type="checkbox" id="__nav_11" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_11">
+          Other Tools
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Other Tools" data-md-level="1">
+        <label class="md-nav__title" for="__nav_11">
+          <span class="md-nav__icon md-icon"></span>
+          Other Tools
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://new-docs.lagoon.sh/lagoon-cli/" class="md-nav__link">
+        Lagoon CLI
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#running-graphql-queries" class="md-nav__link">
+    Running GraphQL queries
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#creating-the-first-project" class="md-nav__link">
+    Creating the first project
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#allowing-access-to-the-project" class="md-nav__link">
+    Allowing access to the project
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#adding-notifications-to-the-project" class="md-nav__link">
+    Adding notifications to the project
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-graphql-queries" class="md-nav__link">
+    Example GraphQL queries
+  </a>
+  
+    <nav class="md-nav" aria-label="Example GraphQL queries">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#adding-a-new-openshift-target" class="md-nav__link">
+    Adding a new OpenShift target
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#adding-a-group-to-a-project" class="md-nav__link">
+    Adding a group to a project
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#adding-a-new-project" class="md-nav__link">
+    Adding a new project
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#list-projects-and-groups" class="md-nav__link">
+    List projects and groups
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#single-project" class="md-nav__link">
+    Single project
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#querying-a-project-by-its-git-url" class="md-nav__link">
+    Querying a project by its Git URL
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#updating-objects" class="md-nav__link">
+    Updating objects
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#deleting-environments" class="md-nav__link">
+    Deleting Environments
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#querying-a-project-to-see-what-groups-and-users-are-assigned" class="md-nav__link">
+    Querying a project to see what groups and users are assigned
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#maintaining-project-metadata" class="md-nav__link">
+    Maintaining project metadata
+  </a>
+  
+    <nav class="md-nav" aria-label="Maintaining project metadata">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#addupdate-metadata-on-a-project" class="md-nav__link">
+    Add/update metadata on a project
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#query-for-projects-by-metadata" class="md-nav__link">
+    Query for projects by metadata
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#removing-metadata-on-a-project" class="md-nav__link">
+    Removing metadata on a project
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+<a href="https://github.com/uselagoon/lagoon/edit/main/docs/administering-lagoon/graphql-queries.md" title="Edit this page" class="md-content__button md-icon">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
+</a>
+
+
+
+<h1 id="graphql-api">GraphQL API<a class="headerlink" href="#graphql-api" title="Permanent link">#</a></h1>
+<h2 id="running-graphql-queries">Running GraphQL queries<a class="headerlink" href="#running-graphql-queries" title="Permanent link">#</a></h2>
+<p>Direct API interactions in Lagoon are done via <a href="./">GraphQL</a>.</p>
+<p>In order to authenticate with the API, we need a JWT (JSON Web Token) that allows us to use the GraphQL API as admin. To generate this token, open the terminal of the <code>auto-idler</code> pod via the OpenShift UI and run the following command:</p>
+<div class="highlight"><pre><span></span><code>./create_jwt.sh
+</code></pre></div>
+<p>This can also be done with the <code>oc</code> command:</p>
+<div class="highlight"><pre><span></span><code>oc -n lagoon-main rsh dc/auto-idler ./create_jwt.sh
+</code></pre></div>
+<p>This will return a long string which is the JWT token. Make a note of this, as we will need it to send queries.</p>
+<p>We also need the URL of the API endpoint, which can be found under "Routes" in the OpenShift UI or <code>oc get route api</code> on the command line. Make a note of this endpoint URL, which we will also need.</p>
+<p>To compose and send GraphQL queries, we recommend <a href="https://github.com/skevy/graphiql-app">GraphiQL.app</a>, a desktop GraphQL client with features such as autocomplete. To continue with the next steps, install and start the app.</p>
+<p>Under "GraphQL Endpoint", enter the API endpoint URL with <code>/graphql</code> on the end. Then click on "Edit HTTP Headers" and add a new header:</p>
+<ul>
+<li>"Header name": <code>Authorization</code></li>
+<li>"Header value": <code>Bearer [JWT token]</code> (make sure that the JWT token has no spaces, as this would not work)</li>
+</ul>
+<p>Press ESC to close the HTTP header overlay and now we are ready to send the first GraphQL request!</p>
+<p><img alt="Editing HTTP Headers in GraphiQL." src="../graphiql-2020-01-29-18-05-54.png" /></p>
+<p>Enter this in the left panel</p>
+<div class="highlight"><pre><span></span><code>query allProjects{
+  allProjects {
+    name
+  }
+}
+</code></pre></div>
+<p><img alt="Running a query in GraphiQL." src="../graphiql-2020-01-29-20-10-32.png" /></p>
+<p>And press the ▶️ button (or press CTRL+ENTER).</p>
+<p>If all went well, your first GraphQL response should appear shortly afterwards in the right pane.</p>
+<h2 id="creating-the-first-project">Creating the first project<a class="headerlink" href="#creating-the-first-project" title="Permanent link">#</a></h2>
+<p>Let's create the first project for Lagoon to deploy! For this we'll use the queries from the GraphQL query template in <a href="../create-project.gql"><code>create-project.gql</code></a>.</p>
+<p>For each of the queries (the blocks starting with <code>mutation {</code>), fill in all of the empty fields marked by TODO comments and run the queries in GraphiQL.app. This will create one of each of the following two objects:</p>
+<ol>
+<li><code>openshift</code> : The OpenShift or Kubernetes cluster to which Lagoon should deploy. Lagoon is not only capable of deploying to its own Kubernetes cluster, but also to any Kubernetes cluster anywhere in the world.</li>
+<li><code>project</code> : The Lagoon project to be deployed, which is a Git repository with a <code>.lagoon.yml</code> configuration file committed in the root.</li>
+</ol>
+<h2 id="allowing-access-to-the-project">Allowing access to the project<a class="headerlink" href="#allowing-access-to-the-project" title="Permanent link">#</a></h2>
+<p>In Lagoon, each developer authenticates via their SSH key(s). This determines their access to:</p>
+<ol>
+<li>The Lagoon API, where they can see and edit projects they have access to.</li>
+<li>Remote shell access to containers that are running in projects they have access to.</li>
+<li>The Lagoon logging system, where a developer can find request logs, container logs, Lagoon logs and more.</li>
+</ol>
+<p>To allow access to the project, we first need to add a new group to the API:</p>
+<div class="highlight"><pre><span></span><code>mutation {
+  addGroup (
+    input: {
+      # TODO: Enter the name for your new group.
+      name: &quot;&quot;
+    }
+  )     {
+    id
+    name
+  }
+}
+</code></pre></div>
+<p>Then we need to add a new user to the API:</p>
+<div class="highlight"><pre><span></span><code>mutation {
+  addUser(
+    input: {
+      email: &quot;michael.schmid@example.com&quot;
+      firstName: &quot;Michael&quot;
+      lastName: &quot;Schmid&quot;
+      comment: &quot;CTO&quot;
+    }
+  ) {
+    # TODO: Make a note of the user ID that is returned.
+    id
+  }
+}
+</code></pre></div>
+<p>Then we can add an SSH public key for the user to the API:</p>
+<div class="highlight"><pre><span></span><code>mutation {
+  addSshKey(
+    input: {
+      # TODO: Fill in the name field.
+      # This is a non-unique identifier for the SSH key.
+      name: &quot;&quot;
+      # TODO: Fill in the keyValue field.
+      # This is the actual SSH public key (without the type at the beginning and without the comment at the end, ex. `AAAAB3NzaC1yc2EAAAADAQ...3QjzIOtdQERGZuMsi0p`).
+      keyValue: &quot;&quot;
+      # TODO: Fill in the keyType field.
+      # Valid values are either SSH_RSA, SSH_ED25519, ECDSA_SHA2_NISTP256/384/521
+      keyType: SSH_RSA
+      user: {
+        # TODO: Fill in the userId field.
+        # This is the user ID that we noted from the addUser query.
+        id:&quot;0&quot;,
+        email:&quot;michael.schmid@example.com&quot;
+      }
+    }
+  ) {
+    id
+  }
+}
+</code></pre></div>
+<p>After we add the key, we need to add the user to a group:</p>
+<div class="highlight"><pre><span></span><code>mutation {
+  addUserToGroup (
+    input: {
+      user: {
+        #TODO: Enter the email address of the user.
+        email: &quot;&quot;
+      }
+      group: {
+        #TODO: Enter the name of the group you want to add the user to.
+        name: &quot;&quot;
+      }
+      #TODO: Enter the role of the user.
+      role: OWNER
+
+    }
+  ) {
+    id
+    name
+  }
+}
+</code></pre></div>
+<p>After running one or more of these kinds of queries, the user will be granted access to create tokens via SSH, access containers and more.</p>
+<h2 id="adding-notifications-to-the-project">Adding notifications to the project<a class="headerlink" href="#adding-notifications-to-the-project" title="Permanent link">#</a></h2>
+<p>If you want to know what is going on during a deployment, we suggest configuring notifications for your project, which provide:</p>
+<ul>
+<li>Push notifications</li>
+<li>Build start information</li>
+<li>Build success or failure messages</li>
+<li>And many more!</li>
+</ul>
+<p>As notifications can be quite different in terms of the information they need, each notification type has its own mutation.</p>
+<p>As with users, we first add the notification:</p>
+<div class="highlight"><pre><span></span><code>mutation {
+  addNotificationSlack(
+    input: {
+      # TODO: Fill in the name field.
+      # This is your own identifier for the notification.
+      name: &quot;&quot;
+      # TODO: Fill in the channel field.
+      # This is the channel for the message to be sent to.
+      channel: &quot;&quot;
+      # TODO: Fill in the webhook field.
+      # This is the URL of the webhook where messages should be sent, this is usually provided by the chat system to you.
+      webhook: &quot;&quot;
+    }
+  ) {
+    id
+  }
+}
+</code></pre></div>
+<p>After the notification is created, we can now assign it to our project:</p>
+<div class="highlight"><pre><span></span><code>mutation {
+  addNotificationToProject(
+    input: {
+      notificationType: SLACK
+      # TODO: Fill in the project field.
+      # This is the project name.
+      project: &quot;&quot;
+      # TODO: Fill in the notification field.
+      # This is the notification name.
+      notificationName: &quot;&quot;
+      # TODO: OPTIONAL
+      # The kind notification class you&#39;re interested in defaults to DEPLOYMENT
+      contentType: DEPLOYMENT/PROBLEM
+      # TODO: OPTIONAL
+      # Related to contentType PROBLEM, we can set the threshold for the kinds of problems
+      # we&#39;d like to be notified about
+      notificationSeverityThreshold &quot;NONE/UNKNOWN/NEGLIGIBLE/LOW/MEDIUM/HIGH/CRITICAL
+    }
+  ) {
+    id
+  }
+}
+</code></pre></div>
+<p>Now for every deployment you will receive messages in your defined channel.</p>
+<h2 id="example-graphql-queries">Example GraphQL queries<a class="headerlink" href="#example-graphql-queries" title="Permanent link">#</a></h2>
+<h3 id="adding-a-new-openshift-target">Adding a new OpenShift target<a class="headerlink" href="#adding-a-new-openshift-target" title="Permanent link">#</a></h3>
+<div class="admonition note">
+<p class="admonition-title">Note:</p>
+<p>In Lagoon 1.x <code>addOpenshift</code> is used for both OpenShift and Kubernetes targets. In Lagoon 2.x this will change.</p>
+</div>
+<p>The OpenShift cluster to which Lagoon should deploy. Lagoon is not only capable of deploying to its own OpenShift, but also to any OpenShift anywhere in the world.</p>
+<div class="highlight"><pre><span></span><code>mutation {
+  addOpenshift(
+    input: {
+      # TODO: Fill in the name field.
+      # This is the unique identifier of the OpenShift.
+      name: &quot;&quot;
+      # TODO: Fill in consoleUrl field.
+      # This is the URL of the OpenShift console (without any `/console` suffix).
+      consoleUrl: &quot;&quot;
+      # TODO: Fill in the token field.
+      # This is the token of the `lagoon` service account created in this OpenShift (this is the same token that we also used during installation of Lagoon).
+      token: &quot;&quot;
+    }
+  ) {
+    name
+    id
+  }
+}
+</code></pre></div>
+<h3 id="adding-a-group-to-a-project">Adding a group to a project<a class="headerlink" href="#adding-a-group-to-a-project" title="Permanent link">#</a></h3>
+<p>This query will add a group to a project. Users of that group will be able to access the project. They will be able to make changes, based on their role in that group.</p>
+<div class="highlight"><pre><span></span><code>mutation {
+  addGroupsToProject (
+    input: {
+      project: {
+        #TODO: Enter the name of the project.
+        name: &quot;&quot;
+      }
+      groups: {
+        #TODO: Enter the name of the group that will be added to the project.
+        name: &quot;&quot;
+      }
+    }
+  ) {
+    id
+  }
+}
+</code></pre></div>
+<h3 id="adding-a-new-project">Adding a new project<a class="headerlink" href="#adding-a-new-project" title="Permanent link">#</a></h3>
+<p>This query adds a new Lagoon project to be deployed, which is a Git repository with a <code>.lagoon.yml</code> configuration file committed in the root.</p>
+<p>If you omit the <code>privateKey</code> field, a new SSH key for the project will be generated automatically.</p>
+<p>If you would like to reuse a key from another project. you will need to supply the key in the <code>addProject</code> mutation.</p>
+<div class="highlight"><pre><span></span><code>mutation {
+  addProject(
+    input: {
+      # TODO: Fill in the name field.
+      # This is the project name.
+      name: &quot;&quot;
+      # TODO: Fill in the private key field (replace newlines with &#39;\n&#39;).
+      # This is the private key for a project, which is used to access the Git code.
+      privateKey: &quot;&quot;
+      # TODO: Fill in the OpenShift field.
+      # This is the id of the OpenShift or Kubernetes to assign to the project.
+      openshift: 0
+      # TODO: Fill in the name field.
+      # This is the project name.
+      gitUrl: &quot;&quot;
+      # TODO: Fill in the branches to be deployed.
+      branches: &quot;&quot;
+      # TODO: Define the production environment.
+      productionEnvironment: &quot;&quot;
+    }
+  ) {
+    name
+    openshift {
+      name
+      id
+    }
+    gitUrl
+    activeSystemsDeploy
+    activeSystemsRemove
+    branches
+    pullrequests
+  }
+}
+</code></pre></div>
+<h3 id="list-projects-and-groups">List projects and groups<a class="headerlink" href="#list-projects-and-groups" title="Permanent link">#</a></h3>
+<p>This is a good query to see an overview of all projects, OpenShifts and groups that exist within our Lagoon.</p>
+<div class="highlight"><pre><span></span><code>query {
+  allProjects {
+    name
+    gitUrl
+  }
+  allOpenshifts {
+    name
+    id
+  }
+  allGroups{
+    id
+    name
+    members {
+      # This will display the users in this group.
+      user {
+        id
+        firstName
+        lastName
+      }
+      role
+    }
+    groups {
+      id
+      name
+    }
+  }
+}
+</code></pre></div>
+<h3 id="single-project">Single project<a class="headerlink" href="#single-project" title="Permanent link">#</a></h3>
+<p>If you want a detailed look at a single project, this query has been proven quite good:</p>
+<div class="highlight"><pre><span></span><code>query {
+  projectByName(
+    # TODO: Fill in the project name.
+    name: &quot;&quot;
+  ) {
+    id
+    branches
+    gitUrl
+    pullrequests
+    productionEnvironment
+    notifications(type: SLACK) {
+      ... on NotificationSlack {
+        name
+        channel
+        webhook
+        id
+      }
+    }
+    environments {
+      name
+      deployType
+      environmentType
+    }
+    openshift {
+      id
+    }
+  }
+}
+</code></pre></div>
+<h3 id="querying-a-project-by-its-git-url">Querying a project by its Git URL<a class="headerlink" href="#querying-a-project-by-its-git-url" title="Permanent link">#</a></h3>
+<p>Don't remember the name of a project, but know the Git URL? Search no longer, there is a GraphQL query for that:</p>
+<div class="highlight"><pre><span></span><code>query {
+  projectByGitUrl(gitUrl: &quot;git@server.com:org/repo.git&quot;) {
+    name
+  }
+}
+</code></pre></div>
+<h3 id="updating-objects">Updating objects<a class="headerlink" href="#updating-objects" title="Permanent link">#</a></h3>
+<p>The Lagoon GraphQL API can not only display objects and create objects, it also has the capability to update existing objects, using <a href="https://blog.apollographql.com/designing-graphql-mutations-e09de826ed97">a patch object</a>.</p>
+<p>Update the branches to deploy within a project:</p>
+<div class="highlight"><pre><span></span><code>mutation {
+  updateProject(
+    input: { id: 109, patch: { branches: &quot;^(prod|stage|dev|update)$&quot; } }
+  ) {
+    id
+  }
+}
+</code></pre></div>
+<p>Update the production environment within a project:</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning:</p>
+<p>This requires a redeploy in order for the changes to be reflected in the containers.</p>
+</div>
+<div class="highlight"><pre><span></span><code> mutation {
+   updateProject(
+    input: { id: 109, patch: { productionEnvironment: &quot;main&quot; } }
+  ) {
+    id
+  }
+}
+</code></pre></div>
+<p>You can also combine multiple changes at once:</p>
+<div class="highlight"><pre><span></span><code>mutation {
+  updateProject(
+    input: {
+      id: 109
+      patch: {
+        productionEnvironment: &quot;main&quot;
+        branches: &quot;^(prod|stage|dev|update)$&quot;
+      }
+    }
+  ) {
+    id
+  }
+}
+</code></pre></div>
+<h3 id="deleting-environments">Deleting Environments<a class="headerlink" href="#deleting-environments" title="Permanent link">#</a></h3>
+<p>You can also use the Lagoon GraphQL API to delete an environment. You'll need to know the project name and the environment name in order to run the command.</p>
+<div class="highlight"><pre><span></span><code>mutation {
+  deleteEnvironment(
+    input: {
+      # TODO: Fill in the name field.
+      # This is the environment name.
+      name:&quot;&quot;
+      # TODO: Fill in the project field.
+      # This is the project name.
+      project:&quot;&quot;
+      execute:true
+    }
+  )
+}
+</code></pre></div>
+<h3 id="querying-a-project-to-see-what-groups-and-users-are-assigned">Querying a project to see what groups and users are assigned<a class="headerlink" href="#querying-a-project-to-see-what-groups-and-users-are-assigned" title="Permanent link">#</a></h3>
+<p>Want to see what groups and users have access to a project? Want to know what their roles are? Do I have a query for you! Using the query below you can search for a project and display the groups, users, and roles that are assigned to that project.</p>
+<div class="highlight"><pre><span></span><code>query search{
+  projectByName(
+    #TODO: Enter the name of the project.
+    name: &quot;&quot;
+  ) {
+    id,
+    branches,
+    productionEnvironment,
+    pullrequests,
+    gitUrl,
+    openshift {
+      id
+    },
+     groups{
+      id
+      name
+      groups {
+        id
+        name
+      }
+      members {
+        role
+        user {
+          id
+          email
+        }
+      }
+    }
+  }
+}
+</code></pre></div>
+<h2 id="maintaining-project-metadata">Maintaining project metadata<a class="headerlink" href="#maintaining-project-metadata" title="Permanent link">#</a></h2>
+<p>Project metadata can be assigned using arbitrary key/value pairs. Projects can then be queried by the associated metadata; for example you may categorize projects by type of software, version number, or any other categorization you may wish to query on later.</p>
+<h3 id="addupdate-metadata-on-a-project">Add/update metadata on a project<a class="headerlink" href="#addupdate-metadata-on-a-project" title="Permanent link">#</a></h3>
+<p>Updates to metadata expect a key/value pair. It operates as an <code>UPSERT</code>, meaning if a key already exists the value will be updated, otherwise inserted.</p>
+<p>You may have any number of k/v pairs stored against a project.</p>
+<div class="highlight"><pre><span></span><code>mutation {
+  updateProjectMetadata(
+    input: { id: 1,  patch: { key: &quot;type&quot;, value: &quot;saas&quot; } }
+  ) {
+    id
+    metadata
+  }
+}
+</code></pre></div>
+<h3 id="query-for-projects-by-metadata">Query for projects by metadata<a class="headerlink" href="#query-for-projects-by-metadata" title="Permanent link">#</a></h3>
+<p>Queries may be by <code>key</code> only (e.g return all projects where a specific key exists) or both <code>key</code> and <code>value</code> where both key and value must match.</p>
+<p>All projects that have the <code>version</code> tag:</p>
+<div class="highlight"><pre><span></span><code>query projectsByMetadata {
+  projectsByMetadata(metadata: [{key: &quot;version&quot;] ) {
+    id
+    name
+  }
+}
+</code></pre></div>
+<p>All projects that have the <code>version</code> tag, specifically version <code>8</code>:</p>
+<div class="highlight"><pre><span></span><code>query projectsByMetadata {
+  projectsByMetadata(metadata: [{key: &quot;version&quot;, value: &quot;8&quot;] ) {
+    id
+    name
+  }
+}
+</code></pre></div>
+<h3 id="removing-metadata-on-a-project">Removing metadata on a project<a class="headerlink" href="#removing-metadata-on-a-project" title="Permanent link">#</a></h3>
+<p>Metadata can be removed on a per-key basis. Other metadata key/value pairs will persist.</p>
+<div class="highlight"><pre><span></span><code>mutation {
+  removeProjectMetadataByKey (
+    input: { id: 1,  key: &quot;version&quot; }
+  ) {
+    id
+    metadata
+  }
+}
+</code></pre></div>
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="../../installing-lagoon/update-lagoon/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Updating" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Updating
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../rbac/" class="md-footer__link md-footer__link--next" aria-label="Next: Role-Based Access Control (RBAC)" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Role-Based Access Control (RBAC)
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../..", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../assets/javascripts/workers/search.5e67fbfe.min.js"}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.e87a5f81.min.js"></script>
+      
+    
+  </body>
+</html>

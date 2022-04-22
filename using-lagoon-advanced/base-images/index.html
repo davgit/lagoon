@@ -1,0 +1,2740 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+        <meta name="author" content="The Lagoon Authors">
+      
+      
+        <link rel="canonical" href="https://docs.lagoon.sh/using-lagoon-advanced/base-images/">
+      
+      <link rel="icon" href="../../images/lagoon-icon.png">
+      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-8.2.6">
+    
+    
+      
+        <title>Base Images - Lagoon Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.9d5733d3.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.e6a45f82.min.css">
+        
+          
+          
+          <meta name="theme-color" content="#2094f3">
+        
+      
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+
+  <script>function gtag(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],gtag("js",new Date),gtag("config","G-W1SJFEVFDB"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){this.value&&gtag("event","search",{search_term:this.value})}),"undefined"!=typeof location$&&location$.subscribe(function(e){gtag("config","G-W1SJFEVFDB",{page_path:e.pathname})})})</script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-W1SJFEVFDB"></script>
+
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="blue" data-md-color-accent="light-blue">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#base-images" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Lagoon Documentation" class="md-header__button md-logo" aria-label="Lagoon Documentation" data-md-component="logo">
+      
+  <img src="../../images/lagoon-icon-bw.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Lagoon Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Base Images
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/uselagoon/lagoon/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    uselagoon/lagoon
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Lagoon Documentation" class="md-nav__button md-logo" aria-label="Lagoon Documentation" data-md-component="logo">
+      
+  <img src="../../images/lagoon-icon-bw.png" alt="logo">
+
+    </a>
+    Lagoon Documentation
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/uselagoon/lagoon/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    uselagoon/lagoon
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2">
+          Using Lagoon - The Basics
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Using Lagoon - The Basics" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Using Lagoon - The Basics
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../using-lagoon-the-basics/" class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../using-lagoon-the-basics/local-development-environments/" class="md-nav__link">
+        Local Development Environments
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../using-lagoon-the-basics/setup-project/" class="md-nav__link">
+        Set Up a New Project
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../using-lagoon-the-basics/configure-webhooks/" class="md-nav__link">
+        Configure Webhooks
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../using-lagoon-the-basics/first-deployment/" class="md-nav__link">
+        First Deployment
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../using-lagoon-the-basics/lagoon-yml/" class="md-nav__link">
+        .lagoon.yml
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../using-lagoon-the-basics/docker-compose-yml/" class="md-nav__link">
+        docker-compose.yml
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../using-lagoon-the-basics/build-and-deploy-process/" class="md-nav__link">
+        Build and Deploy Process
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../using-lagoon-the-basics/going-live/" class="md-nav__link">
+        Going Live
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3">
+          Docker Images
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Docker Images" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Docker Images
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../docker-images/elasticsearch/" class="md-nav__link">
+        Elasticsearch
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../docker-images/mariadb/" class="md-nav__link">
+        MariaDB
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../docker-images/mariadb/mariadb-drupal/" class="md-nav__link">
+        MariaDB-Drupal
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../docker-images/mongodb/" class="md-nav__link">
+        MongoDB
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../docker-images/nodejs/" class="md-nav__link">
+        Node.js
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../docker-images/nginx/" class="md-nav__link">
+        NGINX
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../docker-images/nginx/nginx-drupal/" class="md-nav__link">
+        NGINX-Drupal
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../docker-images/php-cli/" class="md-nav__link">
+        PHP-CLI
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../docker-images/php-cli/php-cli-drupal/" class="md-nav__link">
+        PHP-CLI-Drupal
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../docker-images/php-fpm/" class="md-nav__link">
+        PHP-FPM
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../docker-images/postgres/" class="md-nav__link">
+        PostgreSQL
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../docker-images/rabbitmq/" class="md-nav__link">
+        RabbitMQ
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../docker-images/solr/" class="md-nav__link">
+        Solr
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../docker-images/solr/solr-drupal/" class="md-nav__link">
+        Solr-Drupal
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../docker-images/redis/" class="md-nav__link">
+        Redis
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../docker-images/varnish/" class="md-nav__link">
+        Varnish
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../docker-images/varnish/varnish-drupal/" class="md-nav__link">
+        Varnish-Drupal
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4">
+          Configuring Applications
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Configuring Applications" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          Configuring Applications
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_1" type="checkbox" id="__nav_4_1" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_1">
+          Drupal
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Drupal" data-md-level="2">
+        <label class="md-nav__title" for="__nav_4_1">
+          <span class="md-nav__icon md-icon"></span>
+          Drupal
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../drupal/services/" class="md-nav__link">
+        Services
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../drupal/services/mariadb/" class="md-nav__link">
+        MariaDB
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../drupal/services/redis/" class="md-nav__link">
+        Redis
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../drupal/services/solr/" class="md-nav__link">
+        Solr
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../drupal/services/varnish/" class="md-nav__link">
+        Varnish
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../drupal/step-by-step-getting-drupal-ready-to-run-on-lagoon/" class="md-nav__link">
+        Step by Step - Getting Drupal ready to run on Lagoon
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../drupal/first-deployment-of-drupal/" class="md-nav__link">
+        First Deployment of Drupal
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../drupal/drush-9/" class="md-nav__link">
+        Drush 9
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../drupal/subfolders/" class="md-nav__link">
+        Subfolders
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../drupal/integrate-drupal-and-fastly/" class="md-nav__link">
+        Integrate Drupal & Fastly
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../drupal/phpunit-and-phpstorm/" class="md-nav__link">
+        PHPUnit and PhpStorm
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5">
+          Understanding Logs
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Understanding Logs" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          Understanding Logs
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../logging/logging/" class="md-nav__link">
+        Logging
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../logging/kibana-examples/" class="md-nav__link">
+        Kibana Examples
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" type="checkbox" id="__nav_6" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_6">
+          Using Lagoon - Advanced
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Using Lagoon - Advanced" data-md-level="1">
+        <label class="md-nav__title" for="__nav_6">
+          <span class="md-nav__icon md-icon"></span>
+          Using Lagoon - Advanced
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../service-types/" class="md-nav__link">
+        Service Types
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../environment-types/" class="md-nav__link">
+        Environment Types
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../environment-variables/" class="md-nav__link">
+        Environment Variables
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Base Images
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Base Images
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#what-is-a-base-image" class="md-nav__link">
+    What is a base image?
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#derived-images" class="md-nav__link">
+    Derived images
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#anatomy-of-a-base-image" class="md-nav__link">
+    Anatomy of a base image
+  </a>
+  
+    <nav class="md-nav" aria-label="Anatomy of a base image">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#metapackages" class="md-nav__link">
+    Metapackages
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#docker-composeyml" class="md-nav__link">
+    docker-compose.yml
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#drupal" class="md-nav__link">
+    Drupal
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#laravel" class="md-nav__link">
+    Laravel
+  </a>
+  
+    <nav class="md-nav" aria-label="Laravel">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#configuration" class="md-nav__link">
+    Configuration
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#queues" class="md-nav__link">
+    Queues
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#understanding-the-process-of-building-a-base-image" class="md-nav__link">
+    Understanding the process of building a base image
+  </a>
+  
+    <nav class="md-nav" aria-label="Understanding the process of building a base image">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#makefile-and-build-assumptions" class="md-nav__link">
+    Makefile and build assumptions
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#base-image-build-variables" class="md-nav__link">
+    Base image build variables
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#makefile-targets" class="md-nav__link">
+    Makefile targets
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-workflow-for-building-a-new-release-of-a-base-image" class="md-nav__link">
+    Example workflow for building a new release of a base image
+  </a>
+  
+    <nav class="md-nav" aria-label="Example workflow for building a new release of a base image">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#releasing-a-new-version-of-a-base-image" class="md-nav__link">
+    Releasing a new version of a base image
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-1-pull-down-the-base-image-locally" class="md-nav__link">
+    Step 1 - Pull down the base image locally
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-2-make-the-changes-to-the-repository" class="md-nav__link">
+    Step 2 - Make the changes to the repository
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-22-ensure-that-the-required-drupal-module-is-enabled-in-template-based-derived-images" class="md-nav__link">
+    Step 2.2 - Ensure that the required Drupal module is enabled in template-based derived images.
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-23-test" class="md-nav__link">
+    Step 2.3 - Test
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-git-tags-map-to-image-tags" class="md-nav__link">
+    How Git tags map to image tags
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-4-building-the-new-base-images" class="md-nav__link">
+    Step 4 - Building the new base images
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#acknowledgement" class="md-nav__link">
+    Acknowledgement
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../workflows/" class="md-nav__link">
+        Workflows
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../active-standby/" class="md-nav__link">
+        Active/Standby
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../triggering-deployments/" class="md-nav__link">
+        Triggering Deployments
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../backups/" class="md-nav__link">
+        Backups
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../graphql/" class="md-nav__link">
+        GraphQL
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../private-repositories/" class="md-nav__link">
+        Private Repositories
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../simplesaml/" class="md-nav__link">
+        SimpleSAML
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ssh/" class="md-nav__link">
+        SSH
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../project-default-users-keys/" class="md-nav__link">
+        Project Default Users and SSH Keys
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../nodejs/" class="md-nav__link">
+        Node.js Graceful Shutdown
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../setting-up-xdebug-with-lagoon/" class="md-nav__link">
+        Setting up Xdebug with Lagoon
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../environment-idling/" class="md-nav__link">
+        Environment Idling
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../custom-tasks/" class="md-nav__link">
+        Custom Tasks
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../deploytarget-configs/" class="md-nav__link">
+        DeployTarget Configs
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../blackfire/" class="md-nav__link">
+        Blackfire
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7" type="checkbox" id="__nav_7" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_7">
+          Installing Lagoon
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Installing Lagoon" data-md-level="1">
+        <label class="md-nav__title" for="__nav_7">
+          <span class="md-nav__icon md-icon"></span>
+          Installing Lagoon
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../installing-lagoon/requirements/" class="md-nav__link">
+        Requirements
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../installing-lagoon/efs-provisioner/" class="md-nav__link">
+        EFS Provisioner
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../installing-lagoon/install-harbor/" class="md-nav__link">
+        Install Harbor
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../installing-lagoon/lagoon-core/" class="md-nav__link">
+        Install Lagoon Core
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../installing-lagoon/install-lagoon-remote/" class="md-nav__link">
+        Install Lagoon Remote
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../installing-lagoon/lagoon-cli/" class="md-nav__link">
+        Install the Lagoon CLI
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../installing-lagoon/querying-graphql/" class="md-nav__link">
+        Querying with GraphQL
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../installing-lagoon/create-user/" class="md-nav__link">
+        Create Lagoon User
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../installing-lagoon/add-project/" class="md-nav__link">
+        Add a Project
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../installing-lagoon/deploy-project/" class="md-nav__link">
+        Deploy Your Project
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../installing-lagoon/add-group/" class="md-nav__link">
+        Add Group
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../installing-lagoon/lagoon-logging/" class="md-nav__link">
+        Lagoon Logging
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../installing-lagoon/opendistro/" class="md-nav__link">
+        OpenDistro
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../installing-lagoon/logs-concentrator/" class="md-nav__link">
+        Logs Concentrator
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../installing-lagoon/lagoon-backups/" class="md-nav__link">
+        Lagoon Backups
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../installing-lagoon/lagoon-files/" class="md-nav__link">
+        Lagoon Files
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../installing-lagoon/gitlab/" class="md-nav__link">
+        GitLab
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../installing-lagoon/update-lagoon/" class="md-nav__link">
+        Updating
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_8" type="checkbox" id="__nav_8" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_8">
+          Administering Lagoon
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Administering Lagoon" data-md-level="1">
+        <label class="md-nav__title" for="__nav_8">
+          <span class="md-nav__icon md-icon"></span>
+          Administering Lagoon
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../administering-lagoon/graphql-queries/" class="md-nav__link">
+        GraphQL API
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../administering-lagoon/rbac/" class="md-nav__link">
+        Role-Based Access Control (RBAC)
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../administering-lagoon/feature-flags/" class="md-nav__link">
+        Feature Flags
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../administering-lagoon/ssl-ciphers/" class="md-nav__link">
+        SSL Ciphers
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_8_5" type="checkbox" id="__nav_8_5" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_8_5">
+          Harbor
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Harbor" data-md-level="2">
+        <label class="md-nav__title" for="__nav_8_5">
+          <span class="md-nav__icon md-icon"></span>
+          Harbor
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../administering-lagoon/using-harbor/" class="md-nav__link">
+        Using Harbor
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../administering-lagoon/using-harbor/security-scanning/" class="md-nav__link">
+        Security Scanning
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../administering-lagoon/using-harbor/harbor-settings/" class="md-nav__link">
+        Harbor Settings
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../administering-lagoon/using-harbor/harbor-settings/harbor-core/" class="md-nav__link">
+        Harbor-Core
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../administering-lagoon/using-harbor/harbor-settings/harbor-database/" class="md-nav__link">
+        Harbor-Database
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../administering-lagoon/using-harbor/harbor-settings/harbor-jobservice/" class="md-nav__link">
+        Harbor-Jobservice
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../administering-lagoon/using-harbor/harbor-settings/harbor-trivy/" class="md-nav__link">
+        Harbor-Trivy
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../administering-lagoon/using-harbor/harbor-settings/harborregistry/" class="md-nav__link">
+        HarborRegistry
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../administering-lagoon/using-harbor/harbor-settings/harborregistryctl/" class="md-nav__link">
+        HarborRegistryCtl
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_9" type="checkbox" id="__nav_9" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_9">
+          Contributing to Lagoon
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Contributing to Lagoon" data-md-level="1">
+        <label class="md-nav__title" for="__nav_9">
+          <span class="md-nav__icon md-icon"></span>
+          Contributing to Lagoon
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../contributing/" class="md-nav__link">
+        Contributing
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../contributing-to-lagoon/developing-lagoon/" class="md-nav__link">
+        Developing Lagoon
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../contributing-to-lagoon/code-of-conduct/" class="md-nav__link">
+        Code of Conduct
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../contributing-to-lagoon/documentation/" class="md-nav__link">
+        Documentation
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../contributing-to-lagoon/tests/" class="md-nav__link">
+        Tests
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../contributing-to-lagoon/api-debugging/" class="md-nav__link">
+        API Debugging
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_10" type="checkbox" id="__nav_10" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_10">
+          Resources
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Resources" data-md-level="1">
+        <label class="md-nav__title" for="__nav_10">
+          <span class="md-nav__icon md-icon"></span>
+          Resources
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../code-of-conduct/" class="md-nav__link">
+        Code of Conduct
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../resources/faq/" class="md-nav__link">
+        FAQ
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../resources/glossary/" class="md-nav__link">
+        Glossary
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../resources/tutorials-and-webinars/" class="md-nav__link">
+        Tutorials, Webinars, and Videos
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://github.com/uselagoon/lagoon-examples" class="md-nav__link">
+        Lagoon Examples
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_11" type="checkbox" id="__nav_11" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_11">
+          Other Tools
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Other Tools" data-md-level="1">
+        <label class="md-nav__title" for="__nav_11">
+          <span class="md-nav__icon md-icon"></span>
+          Other Tools
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://new-docs.lagoon.sh/lagoon-cli/" class="md-nav__link">
+        Lagoon CLI
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#what-is-a-base-image" class="md-nav__link">
+    What is a base image?
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#derived-images" class="md-nav__link">
+    Derived images
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#anatomy-of-a-base-image" class="md-nav__link">
+    Anatomy of a base image
+  </a>
+  
+    <nav class="md-nav" aria-label="Anatomy of a base image">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#metapackages" class="md-nav__link">
+    Metapackages
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#docker-composeyml" class="md-nav__link">
+    docker-compose.yml
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#drupal" class="md-nav__link">
+    Drupal
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#laravel" class="md-nav__link">
+    Laravel
+  </a>
+  
+    <nav class="md-nav" aria-label="Laravel">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#configuration" class="md-nav__link">
+    Configuration
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#queues" class="md-nav__link">
+    Queues
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#understanding-the-process-of-building-a-base-image" class="md-nav__link">
+    Understanding the process of building a base image
+  </a>
+  
+    <nav class="md-nav" aria-label="Understanding the process of building a base image">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#makefile-and-build-assumptions" class="md-nav__link">
+    Makefile and build assumptions
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#base-image-build-variables" class="md-nav__link">
+    Base image build variables
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#makefile-targets" class="md-nav__link">
+    Makefile targets
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-workflow-for-building-a-new-release-of-a-base-image" class="md-nav__link">
+    Example workflow for building a new release of a base image
+  </a>
+  
+    <nav class="md-nav" aria-label="Example workflow for building a new release of a base image">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#releasing-a-new-version-of-a-base-image" class="md-nav__link">
+    Releasing a new version of a base image
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-1-pull-down-the-base-image-locally" class="md-nav__link">
+    Step 1 - Pull down the base image locally
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-2-make-the-changes-to-the-repository" class="md-nav__link">
+    Step 2 - Make the changes to the repository
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-22-ensure-that-the-required-drupal-module-is-enabled-in-template-based-derived-images" class="md-nav__link">
+    Step 2.2 - Ensure that the required Drupal module is enabled in template-based derived images.
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-23-test" class="md-nav__link">
+    Step 2.3 - Test
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-git-tags-map-to-image-tags" class="md-nav__link">
+    How Git tags map to image tags
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-4-building-the-new-base-images" class="md-nav__link">
+    Step 4 - Building the new base images
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#acknowledgement" class="md-nav__link">
+    Acknowledgement
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+<a href="https://github.com/uselagoon/lagoon/edit/main/docs/using-lagoon-advanced/base-images.md" title="Edit this page" class="md-content__button md-icon">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
+</a>
+
+
+
+<h1 id="base-images">Base Images<a class="headerlink" href="#base-images" title="Permanent link">#</a></h1>
+<h2 id="what-is-a-base-image">What is a base image?<a class="headerlink" href="#what-is-a-base-image" title="Permanent link">#</a></h2>
+<p>A base image is a <a href="https://www.docker.com/">Docker</a> image that can be and is used by a project deployed on Lagoon. A base image provides a way to ensure that nothing is brought into the codebase/project from upstream that has not been audited. It also allows us to ensure that anything we might need on the deployed environment is available - from lower-level libraries to application-level themes and modules.</p>
+<p>Base images save time and resources when you know what system is being deployed to - if shared packages are included in the base image, they don’t have to be deployed to hundreds of sites individually.</p>
+<h2 id="derived-images">Derived images<a class="headerlink" href="#derived-images" title="Permanent link">#</a></h2>
+<p>A derived image is one that extends a base image. For example, you might need to make several blog sites. You take our Drupal image, customize it to include all of the modules and themes you need for your blog sites, and deploy them all with that blog image. Templates are derived from base images.</p>
+<p>All derived images should pull in the <code>composer.json</code> file (via repositories like <a href="https://packagist.org/">Packagist</a>, <a href="https://github.com/composer/satis">Satis</a>, or <a href="https://github.com/">GitHub</a>) so that they are using the most recent versions of the base packages.</p>
+<p>Further, the derived image includes a call to the script <code>/build/pre_composer</code>, which can be used by the base image to run scripts, updates, etc., downstream in the derived images. For instance, it should run by default when any package is updated or installed at the derived image, and the <code>pre_composer</code> script will then update the base image package.</p>
+<h2 id="anatomy-of-a-base-image">Anatomy of a base image<a class="headerlink" href="#anatomy-of-a-base-image" title="Permanent link">#</a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note:</p>
+<p><strong>Note</strong>: this document will talk about Drupal and Laravel base images as examples, as it was originally written for a client who uses those technologies in their Lagoon projects. It will be expanded to cover the contents of other base images, but none of the processes differ, no matter what the content of your base image.</p>
+</div>
+<p>Base images are managed with <a href="https://getcomposer.org/">Composer</a> and hosted in <a href="https://bitbucket.org/">Bitbucket</a>, <a href="https://github.com/">Github</a>, or <a href="https://gitlab.com/">GitLab</a> (whatever your team is using). Each base image has its own repository.</p>
+<h3 id="metapackages">Metapackages<a class="headerlink" href="#metapackages" title="Permanent link">#</a></h3>
+<p>The metapackage is a Composer package that wraps several other components. These include, for example, the core files for Laravel or Drupal, along with any needed modules or themes. This way, you do not need to include Laravel or Drupal, etc., as a dependency in your project.</p>
+<p>Here’s an example from the <code>composer.json</code> in a Laravel base image:</p>
+<div class="highlight"><span class="filename">composer.json</span><pre><span></span><code>&quot;require&quot;: {
+    &quot;amazeelabs/algm_laravel_baseimage&quot;: &quot;*&quot;
+},
+</code></pre></div>
+<p>We only require this metapackage, which points to a GitHub repository.</p>
+<h3 id="docker-composeyml"><strong><code>docker-compose.yml</code></strong><a class="headerlink" href="#docker-composeyml" title="Permanent link">#</a></h3>
+<p>Other pieces of your project are defined in <a href="../../using-lagoon-the-basics/docker-compose-yml/"><code>docker-compose.yml</code></a>. For example, if you have a Drupal project, you need the Drupal image, but you also need MariaDB, Solr, Redis, and Varnish. We have versions of these services optimized for Drupal, all of which are included in <code>docker-compose.yml</code>.</p>
+<h3 id="drupal">Drupal<a class="headerlink" href="#drupal" title="Permanent link">#</a></h3>
+<p>The Drupal base image contains the following contributed tools and modules, in addition to Drupal core:</p>
+<ul>
+<li><a href="https://drupalconsole.com/">Drupal Console</a></li>
+<li><a href="https://www.drush.org/">Drush</a></li>
+<li><a href="https://www.drupal.org/project/config_installer">Configuration Installer</a></li>
+<li><a href="https://www.drupal.org/project/redis">Redis</a></li>
+<li><a href="https://www.drupal.org/project/poll">Poll</a></li>
+<li><a href="https://www.drupal.org/project/search_api">Search API</a></li>
+<li><a href="https://www.drupal.org/project/search_api_solr">Search API Solr</a></li>
+<li><a href="https://www.drupal.org/project/varnish_purge">Varnish Purge</a></li>
+<li><a href="https://www.drupal.org/project/purge">Purge</a></li>
+<li><a href="https://www.drupal.org/project/admin_toolbar">Admin Toolbar</a></li>
+<li><a href="https://www.drupal.org/project/cdn">CDN</a></li>
+<li><a href="https://www.drupal.org/project/password_policy">Password Policy</a></li>
+<li><a href="https://www.drupal.org/project/pathauto">Pathauto</a></li>
+<li><a href="https://www.drupal.org/project/ultimate_cron">Ultimate Cron</a></li>
+</ul>
+<h3 id="laravel">Laravel<a class="headerlink" href="#laravel" title="Permanent link">#</a></h3>
+<h4 id="configuration">Configuration<a class="headerlink" href="#configuration" title="Permanent link">#</a></h4>
+<p>The base images have provided the default values for the environment variables used by Laravel.</p>
+<p>These are values for:</p>
+<ul>
+<li><code>DB_CONNECTION</code></li>
+<li><code>DB_HOST</code></li>
+<li><code>DB_PORT</code></li>
+<li><code>DB_DATABASE</code></li>
+<li><code>DB_USERNAME</code></li>
+<li><code>DB_PASSWORD</code></li>
+<li><code>REDIS_HOST</code></li>
+<li><code>REDIS_PASSWORD</code></li>
+<li><code>REDIS_PORT</code></li>
+</ul>
+<p>Ensure that your config files (typically located in <code>/config</code>) make use of these by default.</p>
+<h4 id="queues">Queues<a class="headerlink" href="#queues" title="Permanent link">#</a></h4>
+<p>If your project makes use of <a href="https://laravel.com/docs/5.8/queues">queues</a>, you can make use of the <code>artisan-worker</code> service. It is a worker container, used for executing <a href="https://laravel.com/docs/5.8/queues#running-the-queue-worker"><code>artisan queue:work</code></a>. This is disabled by default - look at the comments in <code>docker-compose.yml</code>.</p>
+<h2 id="understanding-the-process-of-building-a-base-image">Understanding the process of building a base image<a class="headerlink" href="#understanding-the-process-of-building-a-base-image" title="Permanent link">#</a></h2>
+<p>There are several parts to the process of building a base image. All of the major steps are represented in the Makefile. The Jenkinsfile contains a more stripped-down view. Taking a look at both files will give you a good understanding of what happens during this process. Most steps can be tested locally (this is important when building new versions of the base image). After you’ve created and tested everything locally and pushed it up, the actual base image is built by <a href="https://jenkins.io/">Jenkins</a> and pushed to <a href="../administering-lagoon/using-harbor/">Harbor</a>.</p>
+<h3 id="makefile-and-build-assumptions">Makefile and build assumptions<a class="headerlink" href="#makefile-and-build-assumptions" title="Permanent link">#</a></h3>
+<p>If you're planning on running locally, there are some minimum environment variables that need to be present to build at all.</p>
+<h3 id="base-image-build-variables">Base image build variables<a class="headerlink" href="#base-image-build-variables" title="Permanent link">#</a></h3>
+<p>Variables injected into the base image build process and where to find them.</p>
+<ul>
+<li><code>BUILD_NUMBER</code> - This is injected by Jenkins automatically.</li>
+<li><code>GIT_BRANCH</code> - This is provided by the Jenkins build process itself. Depends on the branch being built at the time (develop, main, etc.).</li>
+<li><code>DOCKER_REPO</code>/<code>DOCKER_HUB</code> - This is defined inside the Jenkinsfile itself. It points to the Docker project and hub into which the resulting images will be pushed.</li>
+<li><code>DOCKER_USERNAME</code>/<code>DOCKER_PASSWORD</code> - These are used to actually log into the Docker repository early in the build. These variables are stored inside of the Jenkins credentials. These are used in the Jenkinsfile itself and are not part of the Makefile. This means that if you’re building base images outside of Jenkins (i.e. locally, to test, etc.) you have to run a <code>docker login</code> manually before running any of the make steps.</li>
+</ul>
+<p>In practice, this means that if you're running any of the <code>make</code> targets on your local machine, you'll want to ensure that these are available in the environment - even if this is just setting them when running make from the command line, as an example:</p>
+<div class="highlight"><pre><span></span><code><span class="nv">GIT_BRANCH</span><span class="o">=</span>example_branch_name <span class="nv">DOCKER_HUB</span><span class="o">=</span>the_docker_hub_the_images_are_pushed_to <span class="nv">DOCKER_REPO</span><span class="o">=</span>your_docker_repo_here <span class="nv">BUILD_NUMBER</span><span class="o">=</span>&lt;some_integer&gt; make images_remove
+</code></pre></div>
+<h3 id="makefile-targets">Makefile targets<a class="headerlink" href="#makefile-targets" title="Permanent link">#</a></h3>
+<p>The most important targets are the following:</p>
+<ul>
+<li><code>images_build</code> : Given the environment variables, this will build and tag the images for publication.</li>
+<li><code>images_publish</code> : Pushes built images to a Docker repository.</li>
+<li><code>images_start</code> : Will start the images for testing, etc.</li>
+<li><code>images_test</code>: Runs basic tests against images.</li>
+<li><code>images_remove</code>: Removes previously built images, given the build environment variables.</li>
+</ul>
+<h3 id="example-workflow-for-building-a-new-release-of-a-base-image">Example workflow for building a new release of a base image<a class="headerlink" href="#example-workflow-for-building-a-new-release-of-a-base-image" title="Permanent link">#</a></h3>
+<p>There are several steps to the build process. Most of these are shared among the various base images. These mostly correspond to the Makefile target described above.</p>
+<ol>
+<li><strong>Docker Login</strong> - The Docker username, password, and URL for Harbor are passed to the Docker client.</li>
+<li><strong>Docker Build</strong> - The <code>make images_build</code> step is run now, which will:</li>
+<li>Ensure that all environment variables are prepared for the build.</li>
+<li>Run a <code>docker-compose build</code>. This will produce several new Docker images from the current Git branch.</li>
+<li><strong>Images Test</strong> - This will run the <code>make images_test</code> target, which will differ depending on the images being tested. In most cases this is a very straightforward test to ensure that the images can be started and interacted with in some way (installing Drupal, listing files, etc.)</li>
+<li><strong>Docker Push</strong> - This step runs the logic (contained in the make target <code>images_publish</code>) that will tag the images resulting from the <strong>Docker Build</strong> in Step 2 and push them to Harbor. This is described in more detail <a href="./#step-4-building-the-new-base-images">elsewhere</a> in this guide.</li>
+<li><strong>Docker Clean Images</strong> - Runs the make target <code>images_remove</code>, which simply deletes the newly built images from the Docker host now that they are in Harbor.</li>
+</ol>
+<h4 id="releasing-a-new-version-of-a-base-image">Releasing a new version of a base image<a class="headerlink" href="#releasing-a-new-version-of-a-base-image" title="Permanent link">#</a></h4>
+<p>There are many reasons to release a new version of a base image. On Drupal or Laravel, Node.js, etc images, it may be in order to upgrade or install a module/package for features or security. It may be about the underlying software that comes bundled in the container, such as updating the version of PHP or Node.js. It may be about updating the actual underlying <em>images</em> on which the base images are built.</p>
+<p>The images that your project's base images are built on are the managed images maintained by the Lagoon team. We release updates to these underlying images on a monthly (or more fequent) basus. When these are updated, you need to build new versions of your own base images in order to incorporate the changes and upgrades bundled in the upstream images.</p>
+<p>In this section we will demonstrate the process of updating and tagging a new release of the Drupal 8 base image. We will add a new module (<a href="https://www.drupal.org/project/clamav">ClamAV</a>) to the base. We’re demonstrating on Drupal because it has the most complex setup of the base images. The steps that are common to every base image are noted below.</p>
+<h4 id="step-1-pull-down-the-base-image-locally">Step 1 - Pull down the base image locally<a class="headerlink" href="#step-1-pull-down-the-base-image-locally" title="Permanent link">#</a></h4>
+<p>This is just pulling down the Git repository locally. In the case of the Drupal 8 base image. In this example, we're using Bitbucket, so we will run:</p>
+<div class="highlight"><pre><span></span><code>git clone ssh://git@bitbucket.biscrum.com:7999/webpro/drupal8_base_image.git
+</code></pre></div>
+<p><img alt="Running `git clone` on the base image repository." src="../../0.gif" /></p>
+<h4 id="step-2-make-the-changes-to-the-repository">Step 2 - Make the changes to the repository<a class="headerlink" href="#step-2-make-the-changes-to-the-repository" title="Permanent link">#</a></h4>
+<div class="admonition note">
+<p class="admonition-title">Note:</p>
+<p><strong>Note:</strong> What is demonstrated here is specific to the Drupal 8 base image. However, any changes (adding files, changing base Docker images, etc.) will be done in this step for all of the base images.</p>
+</div>
+<p>In our example, we are adding the ClamAV module to the Drupal 8 base image. This involves a few steps. The first is requiring the package so that it gets added to our <code>composer.json</code> file. This is done by running a <code>composer require</code>.</p>
+<p>Here we run:</p>
+<div class="highlight"><pre><span></span><code>composer require drupal/clamav
+</code></pre></div>
+<p><img alt="Running `composer require drupal/clamav`" src="../../step2_require.gif" /></p>
+<p>When the composer require process completes, the package should then appear in the <code>composer.json</code> file.</p>
+<p>Here we open the <code>composer.json</code> file and take a look at the list of required packages, and check that the ClamAV package is listed, and see that it is there:</p>
+<p><img alt="Opening composer.json to check that ClamAV is now required." src="../../2.gif" /></p>
+<h4 id="step-22-ensure-that-the-required-drupal-module-is-enabled-in-template-based-derived-images">Step 2.2 - Ensure that the required Drupal module is enabled in template-based derived images.<a class="headerlink" href="#step-22-ensure-that-the-required-drupal-module-is-enabled-in-template-based-derived-images" title="Permanent link">#</a></h4>
+<p>For any modules now added to the base image, we need to ensure that they’re enabled on the template-based derived images. This is done by adding the module to the Lagoon Bundle module located at <code>./web/modules/lagoon/lagoon_bundle</code>. Specifically, it requires you to add it as a dependency to the <code>dependencies</code> section of the <code>lagoon_bundle.info.yml</code> file. The Lagoon Bundle module is a utility module that exists only to help enforce dependencies across derived images.</p>
+<p>Here we open <code>web/modules/contrib/lagoon/lagoon_bundle/lagoon_bundle.info.yml</code> and add <code>clamav:clamav</code> as a dependency:</p>
+<p><img alt="Adding ClamAV as a dependency of Lagoon Bundle." src="../../3.png" /></p>
+<p>Adding a dependency to this will ensure that whenever the Lagoon Bundle module is enabled on the derived image, its dependencies (in this case, the just-added ClamAV module) will also be enabled. This is enforced by a post-rollout script which enables <code>lagoon_bundle</code> on the derived images when they are rolled out.</p>
+<h4 id="step-23-test">Step 2.3 - Test<a class="headerlink" href="#step-23-test" title="Permanent link">#</a></h4>
+<p>This will depend on what you’re testing. In the case of adding the ClamAV module, we want to ensure that in the base image, the module is downloaded, and that the Lagoon Bundle module enables ClamAV when it is enabled.</p>
+<p>Here we check that the module is downloaded to <code>/app/web/modules/contrib</code>:</p>
+<p><img alt="Checking /app/web/modules/contrib to make sure ClamAV is downloaded. " src="../../4.gif" /></p>
+<p>And then we check that when we enable the <code>lagoon_bundle</code> module, it enables <code>clamav</code> by running:</p>
+<div class="highlight"><pre><span></span><code>drush pm-enable lagoon_bundle -y
+</code></pre></div>
+<p><img alt="Running `drush pm-enable lagoon_bundle -y` and seeing that it also enables ClamAV" src="../../5.gif" /></p>
+<div class="admonition warning">
+<p class="admonition-title">Warning:</p>
+<p><strong>Note:</strong> You’ll see that there is a JWT error in the container above. You can safely ignore this in the demonstration above - but, for background, you will see this error when there is no Lagoon environment for the site you’re working on.</p>
+</div>
+<p>With our testing done, we can now tag and build the images.</p>
+<p><strong>Step 3 - Tagging images</strong></p>
+<p>Images are versioned based on their <a href="https://git-scm.com/docs/git-tag">Git tags</a> - these should follow standard <a href="https://semver.org/">semantic versioning</a> (semver) practices. All tags should have the structure <strong>vX.Y.Z</strong> where X, Y, and Z are integers (to be precise the X.Y.Z are themselves the semantic version - the vX.Y.Z is a tag). This is an assumption that is used to determine the image tags, so it <em>must</em> be adhered to.</p>
+<p>In this example we will be tagging a new version of the Drupal 8 base image indicating that we have added ClamAV.</p>
+<p><strong>Here we demonstrate how to tag an image.</strong></p>
+<p>We check that we have committed (but not pushed) our changes, just as you would do for any regular commit and push, using <code>git log</code>.</p>
+<ol>
+<li>Commit your changes if you haven’t yet.</li>
+<li>We then check to see what tag we are on using <code>git tag</code>.</li>
+<li>Then, tag them using <code>git tag -a v0.0.9 -m “Adds clamAV to base.”</code></li>
+<li><em>git  -a, --annotate:  Make an unsigned, annotated tag object</em></li>
+<li>Next, we push our tags with <code>git push --tags</code>.</li>
+<li>And finally, push all of our changes with <code>git push</code>.</li>
+</ol>
+<div class="admonition danger">
+<p class="admonition-title">Danger:</p>
+<p><strong>Note:</strong> The tags must be pushed explicitly in their own step!</p>
+</div>
+<p><img alt="Demonstrating how to tag and push a base image." src="../../6.gif" /></p>
+<h4 id="how-git-tags-map-to-image-tags">How Git tags map to image tags<a class="headerlink" href="#how-git-tags-map-to-image-tags" title="Permanent link">#</a></h4>
+<div class="admonition danger">
+<p class="admonition-title">Danger:</p>
+<p><strong>Important note:</strong> Depending on the build workflow, you will almost certainly push the changes via the <strong>develop</strong> branch before merging it into the <strong>main</strong> branch.</p>
+</div>
+<p>An important point to remember here is that the Jenkins base image build process will tag <em>images</em> based on the <em>most recent commit’s tag</em>.</p>
+<p>Images are tagged using the following rules, and images will be built for each of these that apply:</p>
+<ol>
+<li>When the <strong>main</strong> branch is built, it is tagged as <code>latest</code>.</li>
+<li>When the develop branch is built, it is tagged as <code>development</code>.</li>
+<li>If the commit being built is <em>tagged</em> then that branch will be built with that commit’s tag.</li>
+<li>This is how we release a new version as we demonstrated above. It can also be used to make ad hoc builds with fairly arbitrary tags - be reasonable with the tag names, it has only been tested with <em>semver</em> tags.</li>
+</ol>
+<h4 id="step-4-building-the-new-base-images">Step 4 - Building the new base images<a class="headerlink" href="#step-4-building-the-new-base-images" title="Permanent link">#</a></h4>
+<div class="admonition note">
+<p class="admonition-title">Note:</p>
+<p><strong>Note:</strong> Generally you will have a trigger strategy set up here for automatic builds, but as that will differ based on your needs and setup, this explains how to build manually.</p>
+</div>
+<ol>
+<li>Visit your Lagoon Jenkins instance.</li>
+<li>Select the project you are working on (in this case, AIOBI Drupal 8 Base).</li>
+<li>Click the branch you would like to build.</li>
+<li>Click “Build Now.”</li>
+</ol>
+<p><img alt="Showing how to build a base image in the Jenkins UI." src="../../7.gif" /></p>
+<p>This will kick off the build process which, if successful, will push up the new images to Harbor.</p>
+<p>If the build is not successful, you can click into the build itself and read the logs to understand where it failed.</p>
+<p>As shown in the screenshot below from Harbor, the image we’ve just built in Jenkins has been uploaded and tagged in Harbor, where it will now be scanned for any vulnerabilities. Since it was tagged as v0.0.9, an image with that tag is present, and because we built the <strong>main</strong> branch, the “latest” image has also been built. At this stage, the v0.0.9 and “latest” images are identical.</p>
+<p><img alt="Screenshot from Harbor showing uploaded and tagged images." src="../../8.png" /></p>
+<h2 id="acknowledgement">Acknowledgement<a class="headerlink" href="#acknowledgement" title="Permanent link">#</a></h2>
+<p>The base image structure draws heavily (and, in fact, is a fork of) <a href="https://github.com/dennisarslan/denpal">Denpal</a>. It is based on the original <a href="https://github.com/drupal-composer/drupal-project">Drupal Composer Template</a>, but includes everything necessary to run on Lagoon (either the local development environment or on hosted Lagoon).</p>
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="../environment-variables/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Environment Variables" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Environment Variables
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../workflows/" class="md-footer__link md-footer__link--next" aria-label="Next: Workflows" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Workflows
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../..", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../assets/javascripts/workers/search.5e67fbfe.min.js"}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.e87a5f81.min.js"></script>
+      
+    
+  </body>
+</html>
